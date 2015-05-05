@@ -23,13 +23,13 @@
 			</header>
 								<div class="login">
 	<h:form id="form1">
-			<h:inputText id="username" value="#{chatManager.fazlogin.nome}" required="true"
-				requiredMessage="Erro: Deve inserir nome." maxlength="25" />
+			<h:inputText id="username" value="123"  binding="#{input1}"
+				 maxlength="25" />
 			<p></p>
-			<h:inputText id="username" value="#{chatManager.fazlogin.pass}" required="true"
-				requiredMessage="Erro: Deve inserir nome." maxlength="25" />
-			<p></p>
-			<h:commandButton id="submeter" value="Submeter" action="" />
+<!-- 			<h:inputText id="password"  value="123" required="true" -->
+<!-- 				 maxlength="25" /> -->
+<!-- 			<p></p> -->
+			<h:commandButton id="submeter" value="Submeter" action="#{chatManager.criaNovo(input1.value, 'io')}" />
 			<h:commandButton id="apagar" value="Apagar" type="reset" />
 		</h:form>
 
