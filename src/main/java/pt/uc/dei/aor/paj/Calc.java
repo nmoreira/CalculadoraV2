@@ -357,40 +357,36 @@ public class Calc implements Serializable{
 		};
 		
 		// end
-		
-		Expression e = new ExpressionBuilder(exp)
-		.function(cosd)
-		.function(sind)
-		.function(tand)
-		.operator(factorial)
-		.variables("pi", "e")
-		.build()
-		.setVariable("pi", Math.PI)
-		.setVariable("e", Math.E);
-		
-		if(e.validate().isValid()){
-			try {
-				res = e.evaluate();			
-				if(res%1 != 0)		
-					out = Double.toString(res);
-				else if (Double.toString(res).endsWith(".0")){
-					out = Double.toString(res);
-					out = out.substring(0, out.length()-2);					
-				} else out = Double.toString(res);
-				est.recolheEstatistica(inputs);		
-			} catch (Exception e1) {
-				out="erros na expressao";			
-			}
+		try{
+			Expression e = new ExpressionBuilder(exp)
+			.function(cosd)
+			.function(sind)
+			.function(tand)
+			.operator(factorial)
+			.variables("pi", "e")
+			.build()
+			.setVariable("pi", Math.PI)
+			.setVariable("e", Math.E);
 			
-		} else {
-			out = "erros na expressao:\n";
-			List<String> erros = e.validate().getErrors();
-			
-			for (String string : erros) {
-				out += string + "\n";
-				System.out.println(string);
-			}
-		}						
+			if(e.validate().isValid()){
+				try {
+					res = e.evaluate();			
+					if(res%1 != 0)		
+						out = Double.toString(res);
+					else if (Double.toString(res).endsWith(".0")){
+						out = Double.toString(res);
+						out = out.substring(0, out.length()-2);					
+					} else out = Double.toString(res);
+					est.recolheEstatistica(inputs);		
+				} catch (Exception e1) {
+					out="erros na expressao";			
+				}
+			} else {
+				out = "erros na expressao";				
+			}	
+		} catch (Exception excp){
+			out = "erros na expressao";
+		}	
 		return out;
 	}
 	
