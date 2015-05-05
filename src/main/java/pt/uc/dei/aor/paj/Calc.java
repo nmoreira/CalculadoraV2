@@ -2,7 +2,6 @@ package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.objecthunter.exp4j.*;
 import net.objecthunter.exp4j.function.Function;
