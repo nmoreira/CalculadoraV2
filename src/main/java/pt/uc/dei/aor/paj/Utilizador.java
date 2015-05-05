@@ -2,10 +2,10 @@ package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 
 
-@ApplicationScoped
+@SessionScoped
 
 public class Utilizador implements Serializable {
 	/**
@@ -15,9 +15,8 @@ public class Utilizador implements Serializable {
 	private String nome;
 	private String pass;
 	
-	
 	public Utilizador (){
-		
+
 	}
 
 	public String getNome() {
