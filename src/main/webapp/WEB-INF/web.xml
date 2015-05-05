@@ -2,8 +2,8 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-	<display-name>proj2NM</display-name>
-	<module-name>proj2NM</module-name>
+	<display-name>CalculadoraV2</display-name>
+	<module-name>CalculadoraV2</module-name>
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
