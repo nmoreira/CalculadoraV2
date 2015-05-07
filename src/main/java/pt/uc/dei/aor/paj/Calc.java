@@ -318,7 +318,8 @@ public class Calc implements Serializable{
 	private String opera(String exp, Expressao inputs){
 		double res;
 		String out;
-		long tempoInicial, tempoFinal, duracao;
+		long tempoInicial, tempoFinal;
+		double duracao;
 
 		// definição de novas funções
 		
@@ -373,15 +374,18 @@ public class Calc implements Serializable{
 					tempoInicial = System.nanoTime();
 					res = e.evaluate();
 					tempoFinal = System.nanoTime();
-					duracao = (tempoFinal - tempoInicial)/1000;
+					duracao = (tempoFinal - tempoInicial)/1000d;
 					if(res%1 != 0){		
 						out = Double.toString(res);
-						out += "::"+ Float.toString(duracao);
+						out += "::"+ Double.toString(duracao);
 					} else if (Double.toString(res).endsWith(".0")){
 						out = Double.toString(res);
 						out = out.substring(0, out.length()-2);	
-						out += "::"+ Float.toString(duracao);
-					} else out = Double.toString(res);
+						out += "::"+ Double.toString(duracao);
+					} else {
+						out = Double.toString(res);
+						out += "::"+ Double.toString(duracao);
+					}
 					est.recolheEstatistica(inputs);		
 				} catch (Exception e1) {
 					out="erros na expressao";			
