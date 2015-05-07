@@ -9,23 +9,23 @@
 	
 	<h:form>
 		<h:outputLabel id="u" value="Username" />
-		<h:inputText value="#{utilizador.nome}" />
+		<h:inputText value="#{utilizador.nome}" required="true" requiredMessage="Insira username!" />
 		
 		<h:outputLabel id="p" value="Password" />
-		<h:inputSecret value="#{utilizador.pass}" />
+		<h:inputSecret value="#{utilizador.pass}" required="true" requiredMessage="Insira password!" />
 		
 		<h:commandButton action="#{chatManager.validaLogin()}" value="Login" type="submit"/>
 		<h:commandButton value="Apagar" type="reset"/>
 	</h:form>
 	
 	<h:form>
-		<h:outputLabel id="nu" value="Novo Username" />
+		<h:outputLabel id="nu" value="Novo Username" required="true" requiredMessage="Insira username!" />
 		<h:inputText value="#{utilizador.nome}" />
 		
-		<h:outputLabel id="np" value="Nova Password" />
+		<h:outputLabel id="np" value="Nova Password" required="true" requiredMessage="Insira password!" />
 		<h:inputSecret value="#{utilizador.pass}" />
 		
-		<h:commandButton action="#{chatManager.criaNovo()}" value="Login" type="submit"/>
+		<h:commandButton action="#{chatManager.criaNovo()}" value="Novo utilizador" type="submit"/>
 		<h:commandButton value="Apagar" type="reset"/>
 	</h:form>
 	

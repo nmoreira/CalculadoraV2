@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 
 @Named
 @ApplicationScoped
@@ -46,6 +45,10 @@ public String validaLogin(){
 			utilactivo = tempUser;
 			return "basic";
 		} else{
+			
+			util.setNome("");
+			util.setPass("");
+			
 			FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -55,32 +58,41 @@ public String validaLogin(){
 		 
 	}
 	
-	
-//	public boolean fazLogin(String nome, String pass) {
-//		boolean sucesso = false;
-//		for (Utilizador x : listautil) {
-//			if (x.getNome().equals(nome) & x.getPass().equals(pass)) {
-//				sucesso = true;
-//				utilactivo = x;
-//			}
-//		}
-//		return sucesso;
-//	}
-	
-	public boolean criaNovo() {
-		boolean criado=false;
-		for (Utilizador x : listautil) {
-			if (x.getNome().equals(nome)){
-				criado=false;
-			}else{
-				criado=true;
-				util.setNome(nome);
-				util.setPass(pass);
-				listautil.add(util);
-				utilactivo=util;
-			}
+	public String criaNovo() {
+		
+		Utilizador tempUser = utilizadores.get(util.getNome());
+		
+		if (tempUser != null){
+			
+			util.setNome("");
+			util.setPass("");
+			
+			FacesMessage msg = new FacesMessage("Nome de utilizador já existe!", "ERROR MSG");
+	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+			
+			return "testelogin";
+			
+		} else {
+			
+			utilizadores.put(util.getNome(), new Utilizador(util.getNome(), util.getPass()));
+			
+			FacesMessage msg = new FacesMessage("Utilizador criado com sucesso!", "ERROR MSG");
+	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+	        
+			return "testelogin";
+			
 		}
-		return criado;
+	
+
+	}
+
+	public String logout(){
+		
+		util.setNome("");
+		util.setPass("");
+		return "testelogin";
 	}
 
 	public ArrayList<Utilizador> getListautil() {
