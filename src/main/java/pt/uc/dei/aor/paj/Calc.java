@@ -165,16 +165,16 @@ public class Calc implements Serializable{
 	
 	private void calcula(){
 		if(operadorValido && parentsisAberto == false){
-			String res = opera(mostrador, expressao);
-			if(res.contains("erros") == false){
+			String [] res = opera(mostrador, expressao).split("::");
+			if(res[0].contains("erros") == false){
 				ArrayList<Input> inputs = expressao.getInputs();
-				hist.adicionaEntrada(new Entrada(mostrador, res, inputs));
+				hist.adicionaEntrada(new Entrada(mostrador, res[0], inputs, res[1]));
 				mostrador = expressao.clear();
-				mostrador = expressao.add(new Input("nm", res));
+				mostrador = expressao.add(new Input("nm", res[0]));
 				init();
 				operadorValido = true;
 			}else {
-				mostrador = res;
+				mostrador = res[0];
 			}			
 		}
 	}
@@ -318,6 +318,7 @@ public class Calc implements Serializable{
 	private String opera(String exp, Expressao inputs){
 		double res;
 		String out;
+		long tempoInicial, tempoFinal, duracao;
 
 		// definição de novas funções
 		
@@ -369,12 +370,17 @@ public class Calc implements Serializable{
 			
 			if(e.validate().isValid()){
 				try {
-					res = e.evaluate();			
-					if(res%1 != 0)		
+					tempoInicial = System.nanoTime();
+					res = e.evaluate();
+					tempoFinal = System.nanoTime();
+					duracao = (tempoFinal - tempoInicial)/1000;
+					if(res%1 != 0){		
 						out = Double.toString(res);
-					else if (Double.toString(res).endsWith(".0")){
+						out += "::"+ Float.toString(duracao);
+					} else if (Double.toString(res).endsWith(".0")){
 						out = Double.toString(res);
-						out = out.substring(0, out.length()-2);					
+						out = out.substring(0, out.length()-2);	
+						out += "::"+ Float.toString(duracao);
 					} else out = Double.toString(res);
 					est.recolheEstatistica(inputs);		
 				} catch (Exception e1) {

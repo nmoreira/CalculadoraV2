@@ -32,6 +32,12 @@
 					<h:commandLink action="#{calc.reUseResult(e)}" value="#{e.res}"
 						title="Reutilizar este resultado" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tempo de execução (microsegundos)" />
+					</f:facet>
+					<h:outputText value="#{e.tempo}" />
+				</h:column>
 			</h:dataTable>
 		</h:form>
 		
