@@ -76,7 +76,8 @@ public String validaLogin(){
 		} else {
 			
 			utilizadores.put(util.getNome(), new Utilizador(util.getNome(), util.getPass()));
-			
+			util.setNome("");
+
 			FacesMessage msg = new FacesMessage("Utilizador criado com sucesso!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
