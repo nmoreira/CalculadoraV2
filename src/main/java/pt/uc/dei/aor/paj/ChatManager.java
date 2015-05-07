@@ -34,6 +34,9 @@ public class ChatManager implements Serializable {
 		listautil = new ArrayList<Utilizador>();
 		listamsg = new ArrayList<String>();
 		utilizadores.put("nuno", new Utilizador("nuno", "123"));
+		utilizadores.put("pedro", new Utilizador("pedro", "123"));
+		utilizadores.put("alberto", new Utilizador("alberto", "123"));
+
 	}
 	
 
@@ -43,7 +46,7 @@ public String validaLogin(){
 		
 		if(tempUser != null && tempUser.getPass().equals(util.getPass())){
 			utilactivo = tempUser;
-			return "basic";
+			return "chatwindow";
 		} else{
 			
 			util.setNome("");
@@ -87,6 +90,10 @@ public String validaLogin(){
 		}
 	
 
+	}
+	
+	public void addMsg (){
+		listamsg.add(util.getNome()+": "+msg.getMsg()+"\n");
 	}
 
 	public String logout(){

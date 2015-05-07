@@ -7,6 +7,21 @@
 
 <h:head></h:head> 
 <h:body> 
-	<h:panelGrid></h:panelGrid>
+
+	<h:form>
+		<h:outputText value="#{utilizador.nome}" />
+		<h:inputText value="#{mensagem.msg}" required="true" requiredMessage="Insira mensagem!" />
+		<h:commandButton action="#{chatManager.addMsg}" value="Enviar" type="submit"/>
+		
+	</h:form>
+	<h:form>	
+				<h:outputText value="#{chatManager.listamsg}" />
+
+
+	
+		
+	</h:form>
+
+	
 </h:body> 
 </html>
