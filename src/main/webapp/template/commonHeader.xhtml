@@ -7,39 +7,28 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="style.css" />
-	<h:outputScript library="js" name="script.js"/>
+	<h:outputScript library="js" name="script.js" />
 </h:head>
 <body>
 	<ui:composition>
 		<h:form id="header">
 			<header class="escolhaCalculadora">
 				<h1>Calculadora</h1>
-				<h:selectOneRadio  styleClass="tipo" id="tipo" value="#{calc.type}" onclick="redirect()" required="true" >
-					<f:selectItem styleClass="radionButton" itemValue="simples" itemLabel="Simples" 
-						itemDescription="Usar calculadora simples" />
-					<f:selectItem styleClass="radionButton" itemValue="cientifica" itemLabel="Científica"
+				<h:selectOneRadio styleClass="tipo" id="tipo" value="#{calc.type}"
+					onclick="redirect()" required="true">
+					<f:selectItem styleClass="radionButton" itemValue="simples"
+						itemLabel="Simples" itemDescription="Usar calculadora simples" />
+					<f:selectItem styleClass="radionButton" itemValue="cientifica"
+						itemLabel="Científica"
 						itemDescription="Usar calculadora Científica" />
 				</h:selectOneRadio>
 			</header>
-								<div class="login">
-	<h:form id="form1">
-			<h:inputText id="username" value="123"  binding="#{input1}"
-				 maxlength="25" />
-			<p></p>
-<!-- 			<h:inputText id="password"  value="123" required="true" -->
-<!-- 				 maxlength="25" /> -->
-<!-- 			<p></p> -->
-			<h:commandButton id="submeter" value="Submeter" action="#{chatManager.criaNovo(input1.value, 'io')}" />
-			<h:commandButton id="apagar" value="Apagar" type="reset" />
+	
 		</h:form>
-
-		<div class="messagecolor">
-			<h:messages showSummary="true" showDetail="false"
-				errorStyle="color: #d20005" infoStyle="color: blue" />
-		</div>
-		</div>
-		</h:form>
-
+		<h:form>       
+            <p>Welcome, #{utilizador.nome}</p>
+        <h:commandButton action="#{loginBean.logout()}" value="Logout"></h:commandButton>
+    </h:form>
 	</ui:composition>
 </body>
 </html>

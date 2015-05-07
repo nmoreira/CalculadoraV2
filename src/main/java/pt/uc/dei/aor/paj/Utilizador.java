@@ -3,8 +3,9 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
-
+@Named
 @SessionScoped
 
 public class Utilizador implements Serializable {
@@ -17,6 +18,11 @@ public class Utilizador implements Serializable {
 	
 	public Utilizador (){
 
+	}
+	
+	public Utilizador (String user, String pass){
+		this.nome = user;
+		this.pass = pass;
 	}
 
 	public String getNome() {
