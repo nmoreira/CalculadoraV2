@@ -11,6 +11,14 @@ function redirect(){
 	}
 }
 
+window.onload = function() {
+
+	setInterval(function() { document.getElementById("j_idt20:refresh").click(); }, 5000);
+
+}
+
+
+
 /*setInterval("nextMessage()", 200); //update the chart every 200 ms               
 
 function updateMessages(xhr, status, args) {
