@@ -85,19 +85,13 @@ public String validaLogin(){
 	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	        
-			return "testelogin";
-			
+			return "testelogin";	
 		}
-	
-
 	}
 	
+	
 	public void addMsg (){
-		listamsg.add(0,msg.getData() + " " + util.getNome() + ": "+msg.getMsg());
-		
-		
-		
-		
+		listamsg.add(0,msg.getData() + " " + util.getNome() + ": "+msg.getMsg());	
 	}
 
 	public String logout(){
