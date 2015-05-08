@@ -93,7 +93,7 @@ public String validaLogin(){
 	}
 	
 	public void addMsg (){
-		listamsg.add(msg.getData() + " " + utilactivo.getNome() + ": "+msg.getMsg());
+		listamsg.add(msg.getData() + " " + util.getNome() + ": "+msg.getMsg());
 	}
 
 	public String logout(){

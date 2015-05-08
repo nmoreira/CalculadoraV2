@@ -181,6 +181,16 @@ td {
 	margin-bottom: 20px;
 }
 
+
+.tablebox {
+	background-image: url("../resources/images/folha.jpg");
+	position: relative;
+	min-height: 400px;
+	max-height:400px;
+	max-width: 240px;
+	overflow-y: scroll;
+}
+
 #chat{
 	display: inline-table;
 	text-align: left;
