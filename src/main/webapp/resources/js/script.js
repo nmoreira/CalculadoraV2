@@ -10,7 +10,7 @@ function redirect(){
 
 window.onload = function() {
 
-	setInterval(function() { document.getElementById("j_idt20:refresh").click(); }, 5000);
+	setInterval(function() { document.getElementById("j_idt17:refresh").click(); }, 5000);
 
 }
 

@@ -8,32 +8,32 @@
 <body>
 	<ui:composition>
 
+
+
+		<h:form>
+			<h:outputText value="#{utilizador.nome}" />
+			<h:inputText id="m" value="#{mensagem.msg}" required="true"
+				requiredMessage="Insira mensagem!" />
+			<h:commandButton id="send" value="Enviar"
+				action="#{chatManager.addMsg}" type="submit">
+				<f:ajax execute="m" render="listamensagens" />
+			</h:commandButton>
+		</h:form>
+
+
+		<h:form>
+			<h:commandButton id="refresh" type="submit" style="display: none">
+				<f:ajax execute="" render="listamensagens" />
+			</h:commandButton>
+		</h:form>
 		<div class="tablebox">
-
-			<h:form>
-				<h:outputText value="#{utilizador.nome}" />
-				<h:inputText id="m" value="#{mensagem.msg}" required="true"
-					requiredMessage="Insira mensagem!" />
-				<h:commandButton id="send" value="Enviar"
-					action="#{chatManager.addMsg}" type="submit">
-					<f:ajax execute="m" render="listamensagens" />
-				</h:commandButton>
-			</h:form>
-
-
-			<h:form>
-				<h:commandButton id="refresh" type="submit" style="display: none">
-					<f:ajax execute="" render="listamensagens" />
-				</h:commandButton>
-			</h:form>
-
 			<h:dataTable id="listamensagens" value="#{chatManager.listamsg}"
 				var="m">
 				<h:column>
 					<h:outputText value="#{m}" />
 				</h:column>
 			</h:dataTable>
-		</div>s
+		</div>
 
 	</ui:composition>
 </body>
