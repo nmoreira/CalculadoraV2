@@ -1,6 +1,8 @@
 package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.enterprise.context.RequestScoped;
@@ -30,13 +32,13 @@ public class Mensagem implements Serializable{
 	
 	public void setMsg(String msg) {
 		this.msg = msg;
+		this.data = (GregorianCalendar) Calendar.getInstance();
 	}
 
-	public GregorianCalendar getData() {
-		return data;
+	public String getData() {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");		
+		String time = timeFormat.format(data.getTime());
+		return 	time;
 	}
-
-	public void setData(GregorianCalendar data) {
-		this.data = data;
-	}
+	
 }

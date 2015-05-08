@@ -12,7 +12,7 @@
 	<ui:composition>
 
 		<h:form id="historico">
-			<h:dataTable id="item" value="#{calc.hist.entradas}" var="e"
+			<h:dataTable value="#{calc.hist.entradas}" var="e"
 				border="2">
 				<f:facet name="caption">
 					<h:outputText value="Histórico" />
@@ -34,7 +34,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Tempo de execução (microsegundos)" />
+						<h:outputText value="Tempo &#10;(microsegundos)" />
 					</f:facet>
 					<h:outputText value="#{e.tempo}" />
 				</h:column>

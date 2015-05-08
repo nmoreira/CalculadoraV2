@@ -23,7 +23,7 @@ public class ChatManager implements Serializable {
 	Mensagem msg;
 
 
-	private ArrayList<Utilizador> listautil;
+//	private ArrayList<Utilizador> listautil;
 	private ArrayList<String> listamsg;
 	private Utilizador utilactivo;
 
@@ -31,7 +31,7 @@ public class ChatManager implements Serializable {
 	private HashMap<String, Utilizador> utilizadores = new HashMap<>();
 
 	public ChatManager() {
-		listautil = new ArrayList<Utilizador>();
+//		listautil = new ArrayList<Utilizador>();
 		listamsg = new ArrayList<String>();
 		utilizadores.put("nuno", new Utilizador("nuno", "123"));
 		utilizadores.put("pedro", new Utilizador("pedro", "123"));
@@ -46,7 +46,7 @@ public String validaLogin(){
 		
 		if(tempUser != null && tempUser.getPass().equals(util.getPass())){
 			utilactivo = tempUser;
-			return "chatwindow";
+			return "basic";
 		} else{
 			
 			util.setNome("");
@@ -93,23 +93,24 @@ public String validaLogin(){
 	}
 	
 	public void addMsg (){
-		listamsg.add(util.getNome()+": "+msg.getMsg()+"\n");
+		listamsg.add(msg.getData() + " " + utilactivo.getNome() + ": "+msg.getMsg());
 	}
 
 	public String logout(){
 		
 		util.setNome("");
 		util.setPass("");
+		utilactivo = null;
 		return "testelogin";
 	}
 
-	public ArrayList<Utilizador> getListautil() {
-		return listautil;
-	}
-
-	public void setListautil(ArrayList<Utilizador> listautil) {
-		this.listautil = listautil;
-	}
+//	public ArrayList<Utilizador> getListautil() {
+//		return listautil;
+//	}
+//
+//	public void setListautil(ArrayList<Utilizador> listautil) {
+//		this.listautil = listautil;
+//	}
 
 	public Utilizador getUtilactivo() {
 		return utilactivo;

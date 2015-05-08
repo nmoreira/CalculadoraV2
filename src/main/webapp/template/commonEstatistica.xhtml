@@ -6,7 +6,7 @@
 
 <h:head></h:head> 
 <body> 
-
+		<ui:composition>
 			<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
 				border="2">
 				<f:facet name="caption">
@@ -28,5 +28,6 @@
 
 				</h:column>
 			</h:dataTable>
+		</ui:composition>
 </body> 
 </html>

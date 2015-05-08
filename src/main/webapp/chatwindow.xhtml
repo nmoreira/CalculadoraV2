@@ -7,21 +7,23 @@
 
 <h:head></h:head> 
 <h:body> 
+	
 
 	<h:form>
 		<h:outputText value="#{utilizador.nome}" />
-		<h:inputText value="#{mensagem.msg}" required="true" requiredMessage="Insira mensagem!" />
-		<h:commandButton action="#{chatManager.addMsg}" value="Enviar" type="submit"/>
+		<h:inputText id="m" value="#{mensagem.msg}" required="true" requiredMessage="Insira mensagem!" />
+		<h:commandButton id="send" value="Enviar" action="#{chatManager.addMsg}" type="submit">
+			<f:ajax execute="m" render="listamensagens" />
+		</h:commandButton>
 		
 	</h:form>
-	<h:form>	
-				<h:outputText value="#{chatManager.listamsg}" />
-
-
+		<h:dataTable id="listamensagens" value="#{chatManager.listamsg}" var="m" >
+		<h:column>
+			<h:outputText value="#{m}" />
+		</h:column>
+	</h:dataTable>
+		
 	
-		
-	</h:form>
-
 	
 </h:body> 
 </html>
