@@ -7,7 +7,7 @@
 
 <h:head></h:head> 
 <h:body> 
-	<div class="tablebox">
+	
 
 	<h:form>
 		<h:outputText value="#{utilizador.nome}" />
@@ -17,12 +17,13 @@
 		</h:commandButton>
 		
 	</h:form>
+	<div class="tablebox">
 		<h:dataTable id="listamensagens" value="#{chatManager.listamsg}" var="m" >
 		<h:column>
 			<h:outputText value="#{m}" />
 		</h:column>
 	</h:dataTable>
-		</div>
+	</div>
 	
 	
 </h:body> 
