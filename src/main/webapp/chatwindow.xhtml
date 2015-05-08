@@ -17,7 +17,8 @@
 		</h:commandButton>
 		
 	</h:form>
-		<h:dataTable id="listamensagens" value="#{chatManager.listamsg}" var="m" >
+		<h:dataTable id="listamensagens" value="#{chatManager.listamsg}" var="m" styleClass="chatTable"
+         rowClasses="chatTableOddRow,chatTableEvenRow">
 		<h:column>
 			<h:outputText value="#{m}" />
 		</h:column>

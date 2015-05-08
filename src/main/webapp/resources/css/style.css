@@ -185,8 +185,8 @@ td {
 .tablebox {
 	background-image: url("../resources/images/folha.jpg");
 	position: relative;
-	min-height: 400px;
-	max-height:400px;
+	min-height: 350px;
+	max-height:350px;
 	max-width: 240px;
 	overflow-y: scroll;
 }
@@ -208,6 +208,17 @@ td {
 	max-height: 400px;
 	max-width: 240px;
 	overflow-y: scroll;
+}
+
+.chatTableOddRow{
+   text-align:left;
+   background:none repeat scroll 0 0  #ffffff;	
+ 
+}
+
+.chatTableEvenRow{
+   text-align:left;
+   background:none repeat scroll 0 0 #cafaff;
 }
 
 /*botões*/
