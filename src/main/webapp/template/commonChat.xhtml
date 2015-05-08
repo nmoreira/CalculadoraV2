@@ -28,6 +28,8 @@
 		</h:form>
 		<div class="tablebox">
 			<h:dataTable id="listamensagens" value="#{chatManager.listamsg}"
+			styleclass="chatTable"
+			rowClasses="chatTableOddRow,chatTableEvenRow"
 				var="m">
 				<h:column>
 					<h:outputText value="#{m}" />
