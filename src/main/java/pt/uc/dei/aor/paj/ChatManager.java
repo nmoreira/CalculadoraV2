@@ -25,7 +25,7 @@ public class ChatManager implements Serializable {
 
 	private ArrayList<String> listamsg;
 	private Utilizador utilactivo;
-	private boolean logeduser=false;
+	private boolean logeduser=false; 
 
 	
 	public boolean isLogeduser() {
