@@ -23,23 +23,15 @@ public class ChatManager implements Serializable {
 	Mensagem msg;
 
 
+//	private ArrayList<Utilizador> listautil;
 	private ArrayList<String> listamsg;
 	private Utilizador utilactivo;
-	private boolean logeduser=false;
 
 	
-	public boolean isLogeduser() {
-		return logeduser;
-	}
-
-
-	public void setLogeduser(boolean logeduser) {
-		this.logeduser = logeduser;
-	}
-
 	private HashMap<String, Utilizador> utilizadores = new HashMap<>();
 
 	public ChatManager() {
+//		listautil = new ArrayList<Utilizador>();
 		listamsg = new ArrayList<String>();
 		utilizadores.put("nuno", new Utilizador("nuno", "123"));
 		utilizadores.put("pedro", new Utilizador("pedro", "123"));
@@ -54,20 +46,17 @@ public String validaLogin(){
 		
 		if(tempUser != null && tempUser.getPass().equals(util.getPass())){
 			utilactivo = tempUser;
-			logeduser=true;
-			return "basic?faces-redirect=true";
-
+			return "basic";
 		} else{
 			
 			util.setNome("");
 			util.setPass("");
-			logeduser=false;
 			
 			FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			
-	        return "testelogin?faces-redirect=true";
+	        return "testelogin";
 		}
 		 
 	}
@@ -80,23 +69,23 @@ public String validaLogin(){
 			
 			util.setNome("");
 			util.setPass("");
-			logeduser=false;
+			
 			FacesMessage msg = new FacesMessage("Nome de utilizador já existe!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			
-			return "testelogin?faces-redirect=true";
+			return "testelogin";
 			
 		} else {
 			
 			utilizadores.put(util.getNome(), new Utilizador(util.getNome(), util.getPass()));
 			util.setNome("");
-			logeduser=false;
+
 			FacesMessage msg = new FacesMessage("Utilizador criado com sucesso!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	        
-			return "testelogin?faces-redirect=true";	
+			return "testelogin";	
 		}
 	}
 	
@@ -110,10 +99,16 @@ public String validaLogin(){
 		util.setNome("");
 		util.setPass("");
 		utilactivo = null;
-		logeduser=false;
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "testelogin?faces-redirect=true";
+		return "testelogin";
 	}
+
+//	public ArrayList<Utilizador> getListautil() {
+//		return listautil;
+//	}
+//
+//	public void setListautil(ArrayList<Utilizador> listautil) {
+//		this.listautil = listautil;
+//	}
 
 	public Utilizador getUtilactivo() {
 		return utilactivo;
