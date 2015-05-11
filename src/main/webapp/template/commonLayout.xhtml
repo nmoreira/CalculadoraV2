@@ -17,6 +17,8 @@
 				<ui:include src="commonHeader.xhtml" />
 			</ui:insert>
 		</div>
+		
+		<h:panelGroup rendered="#{chatManager.logeduser}">
 
 		<div id="chat">
 			<ui:insert name="chat">
@@ -41,6 +43,12 @@
 				<ui:include src="commonHistorico.xhtml" />
 			</ui:insert>
 		</div>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{!chatManager.logeduser}" >
+			<h1  style="height:350px">Não tem autorização para visitar esta página, por favor <h:link value="inicie sessão" outcome="testelogin.xhtml" />.</h1>
+		</h:panelGroup>
 		
 		<div>
 			<ui:insert name="footer">

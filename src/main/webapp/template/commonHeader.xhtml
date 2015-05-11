@@ -25,7 +25,7 @@
 			</header>
 	
 		</h:form>
-		<h:form>       
+		<h:form rendered="#{chatManager.logeduser}">       
             <p>Welcome, #{utilizador.nome}</p>
         <h:commandButton action="#{chatManager.logout()}" value="Logout"></h:commandButton>
     </h:form>
