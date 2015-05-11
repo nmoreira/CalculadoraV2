@@ -15,7 +15,17 @@ public class Utilizador implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String pass;
+	private boolean logeduser=false; 
+
 	
+	public boolean isLogeduser() {
+		return logeduser;
+	}
+
+	public void setLogeduser(boolean logeduser) {
+		this.logeduser = logeduser;
+	}
+
 	public Utilizador (){
 
 	}

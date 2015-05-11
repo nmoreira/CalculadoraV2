@@ -25,18 +25,6 @@ public class ChatManager implements Serializable {
 
 	private ArrayList<String> listamsg;
 	private Utilizador utilactivo;
-	private boolean logeduser=false; 
-
-	
-	public boolean isLogeduser() {
-		return logeduser;
-	}
-
-
-	public void setLogeduser(boolean logeduser) {
-		this.logeduser = logeduser;
-	}
-
 	private HashMap<String, Utilizador> utilizadores = new HashMap<>();
 
 	public ChatManager() {
@@ -54,15 +42,14 @@ public String validaLogin(){
 		
 		if(tempUser != null && tempUser.getPass().equals(util.getPass())){
 			utilactivo = tempUser;
-			logeduser=true;
+			util.setLogeduser(true);
 			return "basic?faces-redirect=true";
 
 		} else{
 			
 			util.setNome("");
 			util.setPass("");
-			logeduser=false;
-			
+			util.setLogeduser(false);			
 			FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -80,7 +67,7 @@ public String validaLogin(){
 			
 			util.setNome("");
 			util.setPass("");
-			logeduser=false;
+			util.setLogeduser(false);
 			FacesMessage msg = new FacesMessage("Nome de utilizador já existe!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -91,7 +78,7 @@ public String validaLogin(){
 			
 			utilizadores.put(util.getNome(), new Utilizador(util.getNome(), util.getPass()));
 			util.setNome("");
-			logeduser=false;
+			util.setLogeduser(false);
 			FacesMessage msg = new FacesMessage("Utilizador criado com sucesso!", "ERROR MSG");
 	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -110,7 +97,7 @@ public String validaLogin(){
 		util.setNome("");
 		util.setPass("");
 		utilactivo = null;
-		logeduser=false;
+		util.setLogeduser(false);
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "testelogin?faces-redirect=true";
 	}
