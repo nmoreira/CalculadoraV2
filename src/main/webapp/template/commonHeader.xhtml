@@ -13,22 +13,29 @@
 	<ui:composition>
 		<h:form id="header">
 			<header class="escolhaCalculadora">
-				<h1>Calculadora</h1>
+				<h1>Calculadora V2</h1>
 				<h:selectOneRadio styleClass="tipo" id="tipo" value="#{calc.type}"
 					onclick="redirect()" required="true">
 					<f:selectItem styleClass="radionButton" itemValue="simples"
-						itemLabel="Simples" itemDescription="Usar calculadora simples" />
+						itemLabel="Calculadora Simples" itemDescription="Usar calculadora simples" />
 					<f:selectItem styleClass="radionButton" itemValue="cientifica"
-						itemLabel="Científica"
+						itemLabel="Calculadora Científica"
 						itemDescription="Usar calculadora Científica" />
+						<f:selectItem styleClass="radionButton" itemValue="estatistica"
+						itemLabel="Tabela Estatística"
+						itemDescription="Consultar estatística das operações" />
 				</h:selectOneRadio>
+		
 			</header>
 	
 		</h:form>
-		<h:form rendered="#{chatManager.logeduser}">       
-            <p>Welcome, #{utilizador.nome}</p>
-        <h:commandButton action="#{chatManager.logout()}" value="Logout"></h:commandButton>
-    </h:form>
+		<h:form>
+		      		        <h5>Welcome, #{utilizador.nome} 
+        <h:commandButton action="#{chatManager.logout()}" value="Logout" ></h:commandButton></h5>
+        </h:form>
+		
+       
+
 	</ui:composition>
 </body>
 </html>

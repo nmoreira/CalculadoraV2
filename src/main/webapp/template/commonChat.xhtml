@@ -7,7 +7,9 @@
 
 <body>
 	<ui:composition>
-		
+
+
+
 		<h:form>
 			<h:outputText value="#{utilizador.nome}" />
 			<h:inputText id="m" value="#{mensagem.msg}" required="true"
@@ -21,7 +23,7 @@
 
 		<h:form id="ref">
 			<h:commandButton id="refresh" type="submit" style="display: none">
-				<f:ajax execute="" render="listamensagens estatistica" />
+				<f:ajax execute="" render="listamensagens" />
 			</h:commandButton>
 		</h:form>
 		<div class="tablebox">
@@ -34,6 +36,7 @@
 				</h:column>
 			</h:dataTable>
 		</div>
+
 	</ui:composition>
 </body>
 </html>
