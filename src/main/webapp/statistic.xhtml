@@ -4,9 +4,16 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+<h:outputStylesheet library="css" name="style.css" />
+<h:outputScript library="js" name="script.js" />
+
+</h:head> 
 <body> 
-		<ui:composition>
+		<ui:composition template="template/commonLayout.xhtml">
+		<ui:define name="content">
+		
+		
 			<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
 				border="2">
 				<f:facet name="caption">
@@ -28,6 +35,7 @@
 
 				</h:column>
 			</h:dataTable>
+			</ui:define>
 		</ui:composition>
 </body> 
 </html>
