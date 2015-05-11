@@ -5,3 +5,4 @@ target/
 .idea/
 *.iml
 atlassian-ide-plugin.xml
+src/main/webapp/testelogin.xhtml
