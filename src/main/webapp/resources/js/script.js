@@ -4,7 +4,10 @@ function redirect(){
 
 		document.location.href = 'basic.xhtml'
 	}else if(document.forms['header']['header:tipo'][1].checked == true){
-		document.location.href = 'scientific.xhtml'
+		document.location.href = 'scientific.xhtml'			
+	}else if(document.forms['header']['header:tipo'][2].checked == true){
+		document.location.href = 'statistic.xhtml'
+			
 	}
 }
 
