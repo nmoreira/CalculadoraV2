@@ -1,6 +1,7 @@
 package pt.uc.dei.aor.paj;
 
-import java.util.ArrayList;
+
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.enterprise.context.SessionScoped;
 
@@ -11,14 +12,14 @@ public class Historico implements Serializable {
 	
 	private static final long serialVersionUID = 1L;	
 	
-	private ArrayList<Entrada> entradas = new ArrayList<>();
+	private CopyOnWriteArrayList<Entrada> entradas = new CopyOnWriteArrayList<>();
 
 	
 	public void adicionaEntrada(Entrada ent) {
 		entradas.add(ent);
 	}
 	
-	public ArrayList<Entrada> getEntradas() {
+	public CopyOnWriteArrayList<Entrada> getEntradas() {
 		return entradas;
 	}
 

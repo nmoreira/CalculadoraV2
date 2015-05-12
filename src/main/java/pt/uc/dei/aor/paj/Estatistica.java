@@ -2,9 +2,10 @@ package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -15,32 +16,31 @@ public class Estatistica implements Serializable{
 	
 	private static final long serialVersionUID = -8382190444479383697L;
 		
-	private HashMap <String, Operador> operation = new HashMap<>();
-	private List<Entry<String, Operador>> entrada;
+	private ConcurrentHashMap <String, Operador> operation = new ConcurrentHashMap<>();
 	
 	public Estatistica() {
-		operation.put("+", new Operador("+"));
-		operation.put("-", new Operador("-"));
-		operation.put("/", new Operador("/"));
-		operation.put("*", new Operador("*"));
-		operation.put("sqrt", new Operador("sqrt"));
-		operation.put("+/-", new Operador("+/-"));
-		operation.put("%", new Operador("%"));
-		operation.put("sin", new Operador("sin"));
-		operation.put("cos", new Operador("cos"));
-		operation.put("tan", new Operador("tan"));
-		operation.put("1/x", new Operador("1/x"));
-		operation.put("x^2", new Operador("x^2"));
-		operation.put("^", new Operador("^"));
-		operation.put("pi", new Operador("pi"));
+		operation.put("+", new Operador("Soma"));
+		operation.put("-", new Operador("Subtração"));
+		operation.put("/", new Operador("Divisão"));
+		operation.put("*", new Operador("Multiplicação"));
+		operation.put("sqrt", new Operador("Raiz quadrada"));
+		operation.put("+/-", new Operador("Inversão de sinal (+/-)"));
+		operation.put("%", new Operador("Percentagem"));
+		operation.put("sin", new Operador("Seno"));
+		operation.put("cos", new Operador("Coseno"));
+		operation.put("tan", new Operador("Tangente"));
+		operation.put("1/x", new Operador("Inverso (1/x)"));
+		operation.put("x^2", new Operador("Quadrado (x^2)"));
+		operation.put("^", new Operador("Expoente (x^y)"));
+		operation.put("pi", new Operador("PI"));
 		operation.put("e", new Operador("e"));
-		operation.put("log10", new Operador("log10"));
-		operation.put("log2", new Operador("log2"));
-		operation.put("log", new Operador("log"));
-		operation.put("!", new Operador("!"));
-		operation.put("cbrt", new Operador("cbrt"));
-		operation.put("e^x", new Operador("e^x"));
-		operation.put("10^x", new Operador("10^x"));
+		operation.put("log10", new Operador("Logaritmo de base 10 (log10)"));
+		operation.put("log2", new Operador("Logaritmo de base 2 (log2)"));
+		operation.put("log", new Operador("Logaritmo de base natural (ln)"));
+		operation.put("!", new Operador("Fatorial (!)"));
+		operation.put("cbrt", new Operador("Raiz Cúbica"));
+		operation.put("e^x", new Operador("Função e^x"));
+		operation.put("10^x", new Operador("Função 10^x"));
 			
 	}
 	
@@ -103,7 +103,7 @@ public class Estatistica implements Serializable{
 	}
 
 	public List<Entry<String, Operador>> getEntrada() {
-		entrada = new ArrayList<Entry<String, Operador>>(operation.entrySet());
+		List<Entry<String, Operador>> entrada = new CopyOnWriteArrayList<Entry<String, Operador>>(operation.entrySet());
 		return entrada;
 	}
 }
