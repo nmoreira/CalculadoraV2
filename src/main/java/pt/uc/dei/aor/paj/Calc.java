@@ -34,11 +34,11 @@ public class Calc implements Serializable{
 	
 	
 	
-	private boolean virgulaValida; // indica se é válido usar a vírgula na expressão
-	private boolean operadorValido; // indica se é válido usar um operador na expressão
-	private boolean existeVirgula; // indica se existe uma vírgula na última parte numérica da expressão
-	private boolean parentsisAberto; // indica se existe um parentsis aberto
-	private boolean graus = false;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
+	boolean virgulaValida; // indica se é válido usar a vírgula na expressão
+	boolean operadorValido; // indica se é válido usar um operador na expressão
+	boolean existeVirgula; // indica se existe uma vírgula na última parte numérica da expressão
+	boolean parentsisAberto; // indica se existe um parentsis aberto
+	boolean graus = false;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
 	
 	public Calc(){
 		init();		
@@ -268,7 +268,7 @@ public class Calc implements Serializable{
 		}
 	}
 	
-	private void insereVirgula(String v){
+	 void insereVirgula(String v){
 		if(virgulaValida && existeVirgula == false){
 			virgulaValida = false;
 			operadorValido = false;
