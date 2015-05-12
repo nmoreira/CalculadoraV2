@@ -23,9 +23,15 @@ public class Operador implements Comparable<Operador>{
 
 	@Override
 	public int compareTo(Operador o) {
-		if(this.getQuant() > o.getQuant())
-			return -1;
-		else return 1;		
+		if(o.getQuant() - this.quant !=0)
+			return o.getQuant() - this.quant;
+		else return this.op.compareToIgnoreCase(o.getOp());
+		
+//		if(this.getQuant() > o.getQuant())
+//			return 1;
+//		else if(this.getQuant() < o.getQuant())
+//			return 1;		
+//		else return this.compareTo(o);
 	}
 
 		
