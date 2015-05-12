@@ -22,7 +22,6 @@ public class ChatManager implements Serializable {
 	@Inject
 	Mensagem msg;
 
-
 	private ArrayList<String> listamsg;
 	private Utilizador utilactivo;
 	private HashMap<String, Utilizador> utilizadores = new HashMap<>();
@@ -32,73 +31,73 @@ public class ChatManager implements Serializable {
 		utilizadores.put("nuno", new Utilizador("nuno", "123"));
 		utilizadores.put("pedro", new Utilizador("pedro", "123"));
 		utilizadores.put("alberto", new Utilizador("alberto", "123"));
-
 	}
-	
 
-public String validaLogin(){
-		
+	public String validaLogin() {
+
 		Utilizador tempUser = utilizadores.get(util.getNome());
-		
-		if(tempUser != null && tempUser.getPass().equals(util.getPass())){
+
+		if (tempUser != null && tempUser.getPass().equals(util.getPass())) {
 			utilactivo = tempUser;
 			util.setLogeduser(true);
 			return "basic?faces-redirect=true";
 
-		} else{
-			
-			util.setNome("");
-			util.setPass("");
-			util.setLogeduser(false);			
-			FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
-	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
-	        FacesContext.getCurrentInstance().addMessage(null, msg);
-			
-	        return "testelogin?faces-redirect=true";
-		}
-		 
-	}
-	
-	public String criaNovo() {
-		
-		Utilizador tempUser = utilizadores.get(util.getNome());
-		
-		if (tempUser != null){
-			
-			util.setNome("");
-			util.setPass("");
-			util.setLogeduser(false);
-			FacesMessage msg = new FacesMessage("Nome de utilizador já existe!", "ERROR MSG");
-	        msg.setSeverity(FacesMessage.SEVERITY_WARN);
-	        FacesContext.getCurrentInstance().addMessage(null, msg);
-			
-			return "testelogin?faces-redirect=true";
-			
 		} else {
-			
-			utilizadores.put(util.getNome(), new Utilizador(util.getNome(), util.getPass()));
+
 			util.setNome("");
+			util.setPass("");
 			util.setLogeduser(false);
-			FacesMessage msg = new FacesMessage("Utilizador criado com sucesso!", "ERROR MSG");
-	        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-	        FacesContext.getCurrentInstance().addMessage(null, msg);
-	        
-			return "testelogin?faces-redirect=true";	
+			FacesMessage msg = new FacesMessage("Erro de login!", "ERROR MSG");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+
+			return "testelogin";
 		}
-	}
-	
-	
-	public void addMsg (){
-		listamsg.add(0,msg.getData() + " " + util.getNome() + ": "+msg.getMsg());	
+
 	}
 
-	public String logout(){
-		
+	public String criaNovo() {
+
+		Utilizador tempUser = utilizadores.get(util.getNome());
+
+		if (tempUser != null) {
+
+			util.setNome("");
+			util.setPass("");
+			util.setLogeduser(false);
+			FacesMessage msg = new FacesMessage(
+					"Nome de utilizador já existe!", "ERROR MSG");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			return "testelogin";
+
+		} else {
+
+			utilizadores.put(util.getNome(), new Utilizador(util.getNome(),
+					util.getPass()));
+			util.setNome("");
+			util.setLogeduser(false);
+			FacesMessage msg = new FacesMessage(
+					"Utilizador criado com sucesso!", "ERROR MSG");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			return "testelogin";
+		}
+	}
+
+	public void addMsg() {
+		listamsg.add(0,
+				msg.getData() + " " + util.getNome() + ": " + msg.getMsg());
+		msg.setMsg("");
+	}
+
+	public String logout() {
 		util.setNome("");
 		util.setPass("");
 		utilactivo = null;
 		util.setLogeduser(false);
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
 		return "testelogin?faces-redirect=true";
 	}
 

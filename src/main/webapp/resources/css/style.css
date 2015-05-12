@@ -96,8 +96,7 @@ h1{
 
 #content{
 	display: inline-block;
-	min-height: 500px;
-	width:100%;
+	min-height: 480px;
 
 }
 
@@ -338,4 +337,10 @@ color: black;
   border-left: rgba(67, 114, 113, 1);
   width: 100px;
 	
+}
+
+em {
+    text-decoration: underline; 
+    text-align: center;
+
 }

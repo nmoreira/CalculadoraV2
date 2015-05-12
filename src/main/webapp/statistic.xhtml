@@ -1,41 +1,52 @@
-<!DOCTYPE html > 
+<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<h:outputStylesheet library="css" name="style.css" />
-<h:outputScript library="js" name="script.js" />
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="script.js" />
 
-</h:head> 
-<body> 
-		<ui:composition template="template/LayoutLogin.xhtml">
+</h:head>
+<body>
+	<ui:composition template="template/LayoutLogin.xhtml">
 		<ui:define name="content">
-		
-		
-			<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
-				border="2">
-				<f:facet name="caption">
-					<h:outputText value="Estatística" />
-				</f:facet>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Operador" />
+
+			<h:panelGroup rendered="#{utilizador.logeduser}">
+				<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
+					border="2">
+					<f:facet name="caption">
+						<h:outputText value="Estatística" />
 					</f:facet>
-					<h:outputText value="#{op.op}" />
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Operador" />
+						</f:facet>
+						<h:outputText value="#{op.op}" />
 
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Resultado" />
-					</f:facet>
-					<h:outputText value="#{op.quant}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Resultado" />
+						</f:facet>
+						<h:outputText value="#{op.quant}" />
 
 
-				</h:column>
-			</h:dataTable>
-			</ui:define>
-		</ui:composition>
-</body> 
+					</h:column>
+				</h:dataTable>
+
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{!utilizador.logeduser}">
+				<h1 style="height: 350px">
+					Não tem autorização para visitar esta página, por favor
+					<h:link value="inicie sessão" outcome="testelogin.xhtml" />
+					.
+				</h1>
+			</h:panelGroup>
+			
+		</ui:define>
+	</ui:composition>
+</body>
 </html>

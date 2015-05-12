@@ -9,6 +9,7 @@
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputScript library="js" name="script.js" />
 </h:head>
+
 <body>
 	<div id="page">
 
@@ -43,7 +44,7 @@
 		</h:panelGroup>
 		
 		<h:panelGroup rendered="#{!utilizador.logeduser}" >
-			<h1  style="height:350px">Não tem autorização para visitar esta página, por favor <h:link value="inicie sessão" outcome="testelogin.xhtml" />.</h1>
+			<h1  style="height:450px">Não tem autorização para visitar esta página, por favor <h:link value="inicie sessão" outcome="testelogin.xhtml" />.</h1>
 		</h:panelGroup>
 		
 		<div>

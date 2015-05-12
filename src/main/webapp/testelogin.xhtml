@@ -20,11 +20,11 @@
 			<h:form>
 				<h4>*** Login ***</h4>
 
-				<h:outputLabel id="u" value="Username  " />
+				<h:outputLabel id="u" value="Username   " />
 				<h:inputText value="#{utilizador.nome}" required="true"
 					requiredMessage="Insira username!" />
 				<p />
-				<h:outputLabel id="p" value="Password  " />
+				<h:outputLabel id="p" value="Password   " />
 				<h:inputSecret value="#{utilizador.pass}" required="true"
 					requiredMessage="Insira password!" />
 				<p />
@@ -38,11 +38,11 @@
 			
 			<h:form>
 				<p />
-				<h:outputLabel id="nu" value="Novo Username"   />
+				<h:outputLabel id="nu" value="Novo Username   "   />
 				<h:inputText value="#{utilizador.nome}"  required="true"
 					requiredMessage="Insira username!" />
 				<p />
-				<h:outputLabel id="np" value="Nova Password"  />
+				<h:outputLabel id="np" value="Nova Password   "  />
 				<h:inputSecret value="#{utilizador.pass}"  required="true"
 					requiredMessage="Insira password!"/>
 				<p />
@@ -52,7 +52,7 @@
 				<p />
 				<div class="messagecolor">
 					<h:messages showSummary="true" showDetail="false"
-						errorStyle="color: #d20005" infoStyle="color: blue" />
+						errorStyle="color: red" infoStyle="color: blue" />
 				</div>
 
 			</h:form>
