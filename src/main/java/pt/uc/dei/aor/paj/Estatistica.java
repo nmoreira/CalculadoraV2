@@ -2,8 +2,8 @@ package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -102,8 +102,9 @@ public class Estatistica implements Serializable{
 			operation.get("e").add();
 	}
 
-	public List<Entry<String, Operador>> getEntrada() {
-		List<Entry<String, Operador>> entrada = new CopyOnWriteArrayList<Entry<String, Operador>>(operation.entrySet());
+	public List<Operador> getEntrada() {
+		List<Operador> entrada = new CopyOnWriteArrayList<Operador>(operation.values());
+		Collections.sort(entrada);
 		return entrada;
 	}
 }
