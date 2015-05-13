@@ -418,6 +418,7 @@ public class Calc implements Serializable{
 	}
 	
 	public void reUseExp(Entrada ent){
+		clearAll();
 		mostrador = ent.getExp();
 		expressao.loadInputs(ent.getInputs());
 		operadorValido = true;
