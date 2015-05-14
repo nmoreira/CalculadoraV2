@@ -14,8 +14,14 @@
 		<ui:define name="content">
 
 			<h:panelGroup rendered="#{utilizador.logeduser}">
-			<h:link value="Voltar à calculadora" outcome="scientific2" />
-			<br />
+				<h:link value="Voltar à calculadora" outcome="scientific" />
+				<br />
+
+				<h:form id="ref">
+					<h:commandButton id="refresh" type="submit" style="display: none">
+						<f:ajax execute="" render="estatistica" />
+					</h:commandButton>
+				</h:form>
 				<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
 					border="2">
 					<f:facet name="caption">
@@ -47,7 +53,7 @@
 					.
 				</h1>
 			</h:panelGroup>
-			
+
 		</ui:define>
 	</ui:composition>
 </body>
