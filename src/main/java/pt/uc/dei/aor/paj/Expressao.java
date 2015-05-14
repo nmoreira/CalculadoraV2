@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj.calc;
+package pt.uc.dei.aor.paj;
 
 import java.util.ArrayList;
 import java.util.Stack;

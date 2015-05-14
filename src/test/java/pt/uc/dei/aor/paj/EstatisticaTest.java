@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj.calc;
+package pt.uc.dei.aor.paj;
 
 import java.util.List;
 
@@ -7,10 +7,6 @@ import org.hamcrest.core.IsNot;
 import org.junit.Before;
 import org.junit.Test;
 
-import pt.uc.dei.aor.paj.calc.Estatistica;
-import pt.uc.dei.aor.paj.calc.Expressao;
-import pt.uc.dei.aor.paj.calc.Input;
-import pt.uc.dei.aor.paj.calc.Operador;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
