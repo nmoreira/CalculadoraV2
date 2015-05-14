@@ -18,10 +18,9 @@ public class Expressao implements Serializable {
 	
 	public String add(Input in){
 		if(this.entrada.size() > 0 && 
-				(in.getTipo().contains("nm") || 
-						in.getTipo().contains("vg")) &&
-				(this.peekLastInput().getTipo().contains("nm") || 
-					this.peekLastInput().getTipo().contains("vg"))){
+				(in.getTipo().contains("nm") || in.getTipo().contains("vg")) &&
+				(this.peekLastInput().getTipo().contains("nm") || this.peekLastInput().getTipo().contains("vg"))
+				){
 			
 			String tmp = this.getLastInput();			
 			tmp = tmp.concat(in.getConteudo());			
