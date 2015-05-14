@@ -27,11 +27,12 @@
 									value="Ver Estatística" /></td>
 							<td><h:panelGroup rendered="#{calc.cientifica}">
 									<h:selectOneRadio id="graus" styleClass="graus"
-										value="#{calc.graus}">
-										<f:selectItem itemValue="#{false}" itemLabel="Radianos"
+										value="#{calc.radianos}">
+										<f:selectItem itemValue="true" itemLabel="Radianos"
 											itemDescription="Usar radianos" />
-										<f:selectItem itemValue="#{true}" itemLabel="Graus"
+										<f:selectItem itemValue="false" itemLabel="Graus"
 											itemDescription="Usar graus" />
+										<f:ajax render="cc"></f:ajax>
 									</h:selectOneRadio>
 								</h:panelGroup></td>
 

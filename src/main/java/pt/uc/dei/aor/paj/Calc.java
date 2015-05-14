@@ -3,14 +3,15 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import net.objecthunter.exp4j.*;
-import net.objecthunter.exp4j.function.Function;
-import net.objecthunter.exp4j.operator.Operator;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+import net.objecthunter.exp4j.function.Function;
+import net.objecthunter.exp4j.operator.Operator;
 
 
 
@@ -21,7 +22,7 @@ public class Calc implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String mostrador="";
-	private boolean cientifica = true;
+	private boolean cientifica = false;
 	
 	@Inject
 	private Expressao expressao;
@@ -38,7 +39,8 @@ public class Calc implements Serializable{
 	private boolean operadorValido; // indica se é válido usar um operador na expressão
 	private boolean existeVirgula; // indica se existe uma vírgula na última parte numérica da expressão
 	private boolean parentsisAberto; // indica se existe um parentsis aberto
-	private boolean graus = false;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
+	private boolean radianos = true;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
+
 	
 	public Calc(){
 		init();		
@@ -240,7 +242,7 @@ public class Calc implements Serializable{
 		if(existeVirgula == false){
 			virgulaValida = true;
 		}		
-		if(graus)
+		if(!radianos)
 			d =	d.replace("(", "d(");
 		
 		mostrador = expressao.add(new Input("op", d));
@@ -407,37 +409,6 @@ public class Calc implements Serializable{
 		this.mostrador = mostrador;
 	}
 
-	public boolean isVirgulaValida() {
-		return virgulaValida;
-	}
-
-	public void setVirgulaValida(boolean virgulaValida) {
-		this.virgulaValida = virgulaValida;
-	}
-
-	public boolean isOperadorValido() {
-		return operadorValido;
-	}
-
-	public void setOperadorValido(boolean operadorValido) {
-		this.operadorValido = operadorValido;
-	}
-
-	public boolean isExisteVirgula() {
-		return existeVirgula;
-	}
-
-	public void setExisteVirgula(boolean existeVirgula) {
-		this.existeVirgula = existeVirgula;
-	}
-
-	public boolean isParentsisAberto() {
-		return parentsisAberto;
-	}
-
-	public void setParentsisAberto(boolean parentsisAberto) {
-		this.parentsisAberto = parentsisAberto;
-	}
 
 	private void init(){
 		virgulaValida = false;
@@ -488,14 +459,12 @@ public class Calc implements Serializable{
 		return hist;
 	}	
 
-	public boolean isGraus() {
-		System.out.println("entrou no isgraus");
-		return graus;
+	public boolean isRadianos() {
+		return radianos;
 	}
 
-	public void setGraus(boolean graus) {
-		this.graus = graus;
-		System.out.println("entrou no setgraus para " + graus);
+	public void setRadianos(boolean radianos) {
+		this.radianos = radianos;
 	}
 
 	public boolean isCientifica() {
@@ -504,6 +473,38 @@ public class Calc implements Serializable{
 
 	public void setCientifica(boolean cientifica) {
 		this.cientifica = cientifica;
+	}
+	
+	public boolean isVirgulaValida() {
+		return virgulaValida;
+	}
+
+	public void setVirgulaValida(boolean virgulaValida) {
+		this.virgulaValida = virgulaValida;
+	}
+
+	public boolean isOperadorValido() {
+		return operadorValido;
+	}
+
+	public void setOperadorValido(boolean operadorValido) {
+		this.operadorValido = operadorValido;
+	}
+
+	public boolean isExisteVirgula() {
+		return existeVirgula;
+	}
+
+	public void setExisteVirgula(boolean existeVirgula) {
+		this.existeVirgula = existeVirgula;
+	}
+
+	public boolean isParentsisAberto() {
+		return parentsisAberto;
+	}
+
+	public void setParentsisAberto(boolean parentsisAberto) {
+		this.parentsisAberto = parentsisAberto;
 	}
 
 }
