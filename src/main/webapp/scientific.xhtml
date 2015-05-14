@@ -6,6 +6,7 @@
 
 <h:head>
 	<title>Calculadora</title>
+	
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputScript library="js" name="script.js" />
 </h:head>
@@ -13,22 +14,35 @@
 	<ui:composition template="template/commonLayout.xhtml">
 		<ui:define name="content">
 				
-			<h:form>
+			<h:form id="cc">
 				<div id="calculadora">
-					<table class="numerosOperacoes">
-						<tr>
-							<td colspan="8"><h:inputTextarea value="#{calc.exp}"
-									styleClass="ecranCientifica" id="mostrador" disabled="true" /></td>
-						</tr>
-						<tr>
-							<td colspan="4"><h:selectOneRadio id="graus"
+				<table class="numerosOperacoes">
+				<tr>
+					<td colspan="2">
+						<h:inputTextarea value="#{calc.exp}"
+									styleClass="ecranCientifica" id="mostrador" disabled="true" />
+					</td>
+				</tr>
+				<tr >
+					<td>
+					<h:panelGroup rendered="#{calc.cientifica}">
+						<h:selectOneRadio id="graus"
 									styleClass="graus" value="#{calc.graus}">
-									<f:selectItem itemValue="false" itemLabel="Radianos"
-										itemDescription="Usar graus" />
-									<f:selectItem itemValue="true" itemLabel="Graus"
+									<f:selectItem itemValue="#{false}" itemLabel="Radianos"
 										itemDescription="Usar radianos" />
-								</h:selectOneRadio></td>
-						</tr>
+									<f:selectItem itemValue="#{true}" itemLabel="Graus"
+										itemDescription="Usar graus" />
+								</h:selectOneRadio>
+					</h:panelGroup>
+					</td>
+					<td> <h:commandButton action="statistic" value="Ver Estatística" /> </td>
+				</tr>
+				<tr>
+					<td>
+						
+						<table>
+						
+						
 						<tr>
 							<td colspan="2"><h:commandButton styleClass="buttons red"
 									id="clear" value="C" action="#{calc.clearAll()}">
@@ -39,197 +53,221 @@
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 
-							<td><h:commandButton styleClass="buttons orange"
-									id="abrepar" action="scientific" value="("
-									actionListener="#{calc.read}">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange"
-									id="fechapar" action="scientific" value=")"
-									actionListener="#{calc.read}">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange"
-									id="maismenos" action="scientific" value="&#177;"
-									actionListener="#{calc.read}">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange"
-									id="percent" action="scientific" value="%"
-									actionListener="#{calc.read}">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
+							
 
 						</tr>
 
 						<tr>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num7" action="scientific" value="7"
+									id="num7"  value="7"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num8" action="scientific" value="8"
+									id="num8"  value="8"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num9" action="scientific" value="9"
+									id="num9"  value="9"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange" id="soma"
-									action="scientific" value="&#43;" actionListener="#{calc.read}">
+									 value="&#43;" actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="pi"
-									action="scientific" value="&#960;"
-									actionListener="#{calc.read}" title="Constante PI (3,14...)">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="xquad"
-									action="scientific" value="x&#178;"
-									actionListener="#{calc.read}" title="X ao quadrado">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="log10"
-									action="scientific" value="log&#8321;&#8320;"
-									actionListener="#{calc.read}" title="Logaritmo de base 10">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="neper"
-									action="scientific" value="e" actionListener="#{calc.read}"
-									title="Constante de Euler (2,718...)">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
+							
 						</tr>
 						<tr>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num4" action="scientific" value="4"
+									id="num4"  value="4"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num5" action="scientific" value="5"
+									id="num5"  value="5"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num6" action="scientific" value="6"
+									id="num6"  value="6"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange" id="sub"
-									action="scientific" value="&#8722;"
+									 value="&#8722;"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="sen"
-									action="scientific" value="sen" actionListener="#{calc.read}">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange"
-									id="inverso" action="scientific" value="&#185;&#8725;&#8339;"
-									actionListener="#{calc.read}" title="Função inverso">
-									<f:ajax render="mostrador estatistica" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="log2"
-									action="scientific" value="log&#8322;"
-									actionListener="#{calc.read}" title="Logaritmo de base 2">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="eexpx"
-									action="scientific" value="e&#739;"
-									actionListener="#{calc.read}" title="Constante e^x">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
+							
 						</tr>
 
 						<tr>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num1" action="scientific" value="1"
+									id="num1"  value="1"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num2" action="scientific" value="2"
+									id="num2"  value="2"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num3" action="scientific" value="3"
+									id="num3"  value="3"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange" id="mult"
-									action="scientific" value="&#215;"
+									 value="&#215;"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="cos"
-									action="scientific" value="cos" actionListener="#{calc.read}">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="xexpy"
-									action="scientific" value="&#8339;&#696;"
-									actionListener="#{calc.read}" title="X elevado a Y">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="log"
-									action="scientific" value="ln" actionListener="#{calc.read}"
-									title="Logaritmo natural (base e)">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="raizq"
-									action="scientific" value="&#8730;"
-									actionListener="#{calc.read}">
-									<f:ajax render="mostrador" />
-								</h:commandButton></td>
-
+							
 						</tr>
 						<tr>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="virg" action="scientific" value="&#44;"
+									id="virg"  value="&#44;"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orangeLith"
-									id="num0" action="scientific" value="0"
+									id="num0"  value="0"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons green" id="igual"
-									action="scientific" value="=" actionListener="#{calc.read}">
-									<f:ajax render="mostrador historico estatistica" />
+									 value="=" actionListener="#{calc.read}">
+									<f:ajax render="mostrador historico" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange" id="div"
-									action="scientific" value="&#247;"
+									 value="&#247;"
 									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
-							<td><h:commandButton styleClass="buttons orange" id="tan"
-									action="scientific" value="tan" actionListener="#{calc.read}">
+							
+						</tr>
+
+					</table>
+					
+					</td>
+					<td>
+						<h:panelGroup rendered="#{calc.cientifica}">
+						<table>
+						<tr>
+						<td><h:commandButton styleClass="buttons orange"
+									id="abrepar"  value="("
+									actionListener="#{calc.read}">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange"
-									id="dezexpx" action="scientific" value="10&#739;"
+									id="fechapar"  value=")"
+									actionListener="#{calc.read}">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange"
+									id="maismenos"  value="&#177;"
+									actionListener="#{calc.read}">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange"
+									id="percent"  value="%"
+									actionListener="#{calc.read}">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							</tr>
+							<tr>
+								<td><h:commandButton styleClass="buttons orange" id="pi"
+									 value="&#960;"
+									actionListener="#{calc.read}" title="Constante PI (3,14...)">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="xquad"
+									 value="x&#178;"
+									actionListener="#{calc.read}" title="X ao quadrado">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="log10"
+									 value="log&#8321;&#8320;"
+									actionListener="#{calc.read}" title="Logaritmo de base 10">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="neper"
+									 value="e" actionListener="#{calc.read}"
+									title="Constante de Euler (2,718...)">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							</tr>
+							<tr>
+							<td><h:commandButton styleClass="buttons orange" id="sen"
+									 value="sen" actionListener="#{calc.read}">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange"
+									id="inverso"  value="&#185;&#8725;&#8339;"
+									actionListener="#{calc.read}" title="Função inverso">
+									<f:ajax render="mostrador estatistica" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="log2"
+									 value="log&#8322;"
+									actionListener="#{calc.read}" title="Logaritmo de base 2">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="eexpx"
+									 value="e&#739;"
+									actionListener="#{calc.read}" title="Constante e^x">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							</tr>
+							<tr>
+								<td><h:commandButton styleClass="buttons orange" id="cos"
+									 value="cos" actionListener="#{calc.read}">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="xexpy"
+									 value="&#8339;&#696;"
+									actionListener="#{calc.read}" title="X elevado a Y">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="log"
+									 value="ln" actionListener="#{calc.read}"
+									title="Logaritmo natural (base e)">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange" id="raizq"
+									 value="&#8730;"
+									actionListener="#{calc.read}">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							</tr>
+							<tr>
+								<td><h:commandButton styleClass="buttons orange" id="tan"
+									 value="tan" actionListener="#{calc.read}">
+									<f:ajax render="mostrador" />
+								</h:commandButton></td>
+							<td><h:commandButton styleClass="buttons orange"
+									id="dezexpx"  value="10&#739;"
 									actionListener="#{calc.read}" title="10^x">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange" id="fact"
-									action="scientific" value="n!" actionListener="#{calc.read}"
+									 value="n!" actionListener="#{calc.read}"
 									title="Factorial">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
 							<td><h:commandButton styleClass="buttons orange"
-									id="cubicrt" action="scientific" value="&#8731;"
+									id="cubicrt"  value="&#8731;"
 									actionListener="#{calc.read}" title="Raiz cúbica">
 									<f:ajax render="mostrador" />
 								</h:commandButton></td>
-						</tr>
-
+							</tr>
 					</table>
-
+					</h:panelGroup>
+					</td>
+				</tr>
+			
+				</table>
 				</div>
 			</h:form>
 			

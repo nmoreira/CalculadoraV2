@@ -1,9 +1,11 @@
 @CHARSET "ISO-8859-1";
 
-body{
+body {
 	min-width: 580px;
 	background-repeat: repeat;
+	font-family: Verdana;
 }
+
 #page {
 	background-repeat: repeat;
 	background-image: url("../resources/images/fundo.png");
@@ -11,18 +13,16 @@ body{
 	border-radius: 20px;
 	background-size: cover;
 	display: inherit;
-	width:100%;
+	width: 100%;
 }
 
-h1{
+h1 {
 	position: inherit;
 	margin: 0px;
 	font-family: Verdana;
 	display: -webkit-inline-box;
 	vertical-align: middle;
 	padding: 18px;
-	
-	
 }
 
 /*header*/
@@ -34,8 +34,8 @@ h1{
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
-	background-color:#333300;
-	height:auto;
+	background-color: #333300;
+	height: auto;
 	padding-left: 42px;
 	padding-right: 42px;
 	vertical-align: middle;
@@ -46,11 +46,10 @@ h1{
 	font-family: Verdana;
 }
 
-.login{
-	
-	background-color:green; 
-	text-align:left;;
-	margin-left: 5px;	
+.login {
+	background-color: green;
+	text-align: left;;
+	margin-left: 5px;
 }
 
 #footer {
@@ -60,49 +59,47 @@ h1{
 	color: Cornsilk;
 	margin-left: auto;
 	margin-right: auto;
-	background-color:#333300;
+	background-color: #333300;
 	padding-left: 42px;
 	padding-right: 42px;
-	padding-top:2px;
-	padding-bottom:2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	vertical-align: middle;
 	box-shadow: 0px 1px 3px #666666;
 	font-size: 12px;
 	font-family: Verdana
 }
 
-
-
 /*Radionbutton*/
-.tipo,.tipo td {
+.tipo, .tipo td {
 	display: inline-table;
-	position:inherit;
+	position: inherit;
 	padding: 5px;
 	font-size: 24px;
 	vertical-align: middle;
 }
 
-.graus{
-	position:relative;
-	width:auto;
-	height:auto;
+.graus {
+	position: relative;
+	width: auto;
+	height: auto;
 	display: inline-table;
 	font-size: 12px;
 	font-family: verdana;
 	color: Wheat;
 	font-weight: bold
-	
 }
 
-#content{
+#content {
 	display: inline-block;
 	min-height: 480px;
-
+	float: left;
 }
 
-
-
-
+#logincontent {
+	display: inline-block;
+	min-height: 480px;
+}
 
 /* Numero e operações*/
 .numerosOperacoes {
@@ -111,7 +108,7 @@ h1{
 	margin-left: auto;
 	margin-right: auto;
 	/* background-color: #3d4543; */
-	background-color:#333300;
+	background-color: #333300;
 	padding: 20px;
 	border: solid white 2px;
 	border-radius: 20px;
@@ -137,7 +134,7 @@ h1{
 
 .ecranCientifica {
 	height: 50px;
-	width: 470px;
+	width: 97%;
 	font-size: 18px;
 	text-align: right;
 	border-width: 6px;
@@ -157,11 +154,8 @@ td {
 	font-family: Verdana;
 }
 
-#calculadora{
-	float:left;
-
-	
-	
+#calculadora {
+	float: left;
 }
 
 #historico {
@@ -169,17 +163,17 @@ td {
 	text-align: center;
 	margin-left: 20px;
 	margin-right: auto;
-	background-image:url("../resources/images/folha.jpg");
+	background-image: url("../resources/images/folha.jpg");
 	padding: 20px;
 	font-weight: bold;
 	font-family: Verdana;
 	box-shadow: 0px 1px 3px #666666;
 	color: Black;
 	margin-bottom: 20px;
-	
+	height: 400px;
 }
 
-#estatistica{
+#estatistica {
 	display: inline-table;
 	text-align: center;
 	margin-left: 20px;
@@ -190,25 +184,23 @@ td {
 	box-shadow: 0px 1px 3px #666666;
 	color: Black;
 	margin-bottom: 20px;
-	background:white;
+	background: white;
 }
-
 
 .tablebox {
 	background-image: url("../resources/images/folha.jpg");
 	position: relative;
 	min-height: 350px;
-	max-height:350px;
+	max-height: 350px;
 	max-width: 240px;
 	overflow-y: scroll;
 }
 
-#basic{
-	
+#basic {
 	margin-left: 160px;
 }
 
-#chat{
+#chat {
 	display: inline-table;
 	text-align: left;
 	margin-right: 20px;
@@ -225,18 +217,17 @@ td {
 	max-height: 400px;
 	max-width: 240px;
 	overflow-y: scroll;
-	float:left; 
+	float: left;
 }
 
-.chatTableOddRow{
-   text-align:left;
-   background:none repeat scroll 0 0  #ffffff;	
- 
+.chatTableOddRow {
+	text-align: left;
+	background: none repeat scroll 0 0 #ffffff;
 }
 
-.chatTableEvenRow{
-   text-align:left;
-   background:none repeat scroll 0 0 #cafaff;
+.chatTableEvenRow {
+	text-align: left;
+	background: none repeat scroll 0 0 #cafaff;
 }
 
 /*botões*/
@@ -260,14 +251,12 @@ td {
 	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .button:active {
 	top: 7px;
 	box-shadow: 0 2px 0 #393939, 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px
 		2px 5px rgba(0, 0, 0, 0.2);
 	color: #fff !important;
-} 
+}
 
 .red {
 	height: 50px;
@@ -277,8 +266,6 @@ td {
 		rgba(0, 0, 0, 0.4), inset 0px 2px 9px rgba(255, 255, 255, 0.2), inset
 		0 -2px 9px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .red:active {
 	box-shadow: 0 2px 0 #5e2525, 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px
@@ -292,8 +279,6 @@ td {
 		0 -2px 9px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .orange:active {
 	box-shadow: 0 2px 0 #5e3a25, 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px
 		2px 5px rgba(0, 0, 0, 0.2);
@@ -306,41 +291,35 @@ td {
 		0 -2px 9px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .green:active {
 	box-shadow: 0 2px 0 #385e25, 0px 4px 4px rgba(0, 0, 0, 0.4), inset 0px
 		2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .orangeLith {
 	background: #feda71;
-	box-shadow: 0 5px 5px #eab551, 0 9px 0 #b98a37, 0px 9px 10px rgba(0, 0, 0, 0.4), inset 0px 
-	2px 9px rgba(255, 255, 255, 0.2), inset 0 -2px 9px rgba(0, 0, 0, 0.2);
-	color: Sienna}
-
+	box-shadow: 0 5px 5px #eab551, 0 9px 0 #b98a37, 0px 9px 10px
+		rgba(0, 0, 0, 0.4), inset 0px 2px 9px rgba(255, 255, 255, 0.2), inset
+		0 -2px 9px rgba(0, 0, 0, 0.2);
+	color: Sienna
+}
 
 .orangeLith:active {
 	box-shadow: 0 2px 0 #b98a37, 0px 4px 4px rgba(0, 0, 0, 0.3), inset 0px
 		2px 5px rgba(0, 0, 0, 0.2);
- }
+}
 
-.logbutton{
-	
-color: black;
-  text-align: center;
-  border-radius: 100px;
-  padding: 2px;
-  background-color: inherit;
-  border-left: rgba(67, 114, 113, 1);
-  width: 100px;
-	
+.logbutton {
+	color: black;
+	text-align: center;
+	border-radius: 100px;
+	padding: 2px;
+	background-color: inherit;
+	border-left: rgba(67, 114, 113, 1);
+	width: 100px;
 }
 
 em {
-    text-decoration: underline; 
-    text-align: center;
-
+	text-decoration: underline;
+	text-align: center;
 }

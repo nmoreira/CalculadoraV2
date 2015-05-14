@@ -21,7 +21,7 @@ public class Calc implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String mostrador="";
-	private String type="";
+	private boolean cientifica = true;
 	
 	@Inject
 	private Expressao expressao;
@@ -38,7 +38,7 @@ public class Calc implements Serializable{
 	boolean operadorValido; // indica se é válido usar um operador na expressão
 	boolean existeVirgula; // indica se existe uma vírgula na última parte numérica da expressão
 	boolean parentsisAberto; // indica se existe um parentsis aberto
-	boolean graus = false;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
+	private boolean graus = false;	// indica se os ângulos introduzidos são em radianos (predefinido) ou em graus
 	
 	public Calc(){
 		init();		
@@ -445,22 +445,24 @@ public class Calc implements Serializable{
 	
 	public Historico getHist() {
 		return hist;
-	}
-	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	}	
 
 	public boolean isGraus() {
+		System.out.println("entrou no isgraus");
 		return graus;
 	}
 
 	public void setGraus(boolean graus) {
 		this.graus = graus;
+		System.out.println("entrou no setgraus para " + graus);
+	}
+
+	public boolean isCientifica() {
+		return cientifica;
+	}
+
+	public void setCientifica(boolean cientifica) {
+		this.cientifica = cientifica;
 	}
 
 }

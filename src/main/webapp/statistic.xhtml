@@ -14,6 +14,8 @@
 		<ui:define name="content">
 
 			<h:panelGroup rendered="#{utilizador.logeduser}">
+			<h:link value="Voltar à calculadora" outcome="scientific2" />
+			<br />
 				<h:dataTable id="estatistica" value="#{calc.est.entrada}" var="op"
 					border="2">
 					<f:facet name="caption">
@@ -41,7 +43,7 @@
 			<h:panelGroup rendered="#{!utilizador.logeduser}">
 				<h1 style="height: 350px">
 					Não tem autorização para visitar esta página, por favor
-					<h:link value="inicie sessão" outcome="testelogin.xhtml" />
+					<h:link value="inicie sessão" outcome="index.xhtml" />
 					.
 				</h1>
 			</h:panelGroup>

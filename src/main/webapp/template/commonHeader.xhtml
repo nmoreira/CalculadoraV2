@@ -14,20 +14,16 @@
 		<h:form id="header">
 			<header class="escolhaCalculadora">
 				<h1>Calculadora V2</h1>
-				<h:selectOneRadio rendered="#{utilizador.logeduser}"
-					styleClass="tipo" id="tipo" value="#{calc.type}"
-					onclick="redirect()" required="true">
-					<f:selectItem styleClass="radionButton" itemValue="simples"
-						itemLabel="Calculadora Simples"
+				<br />
+				<h:selectOneRadio id="t2" rendered="#{utilizador.logeduser}"
+					styleClass="tipo" value="#{calc.cientifica}">
+					<f:selectItem itemValue="#{false}" itemLabel="simples"
 						itemDescription="Usar calculadora simples" />
-					<f:selectItem styleClass="radionButton" itemValue="cientifica"
-						itemLabel="Calculadora Científica"
-						itemDescription="Usar calculadora Científica" />
-					<f:selectItem styleClass="radionButton" itemValue="estatistica"
-						itemLabel="Tabela Estatística"
-						itemDescription="Consultar estatística das operações" />
+					<f:selectItem itemValue="#{true}" itemLabel="cientifica"
+						itemDescription="Usar calculadora científica" />
+					<f:ajax render="cc"></f:ajax>
 				</h:selectOneRadio>
-
+				
 			</header>
 
 		</h:form>

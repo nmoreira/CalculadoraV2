@@ -40,7 +40,7 @@ public class ChatManager implements Serializable {
 		if (tempUser != null && tempUser.getPass().equals(util.getPass())) {
 			utilactivo = tempUser;
 			util.setLogeduser(true);
-			return "basic?faces-redirect=true";
+			return "scientific?faces-redirect=true";
 
 		} else {
 
@@ -51,7 +51,7 @@ public class ChatManager implements Serializable {
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 
-			return "testelogin";
+			return "index";
 		}
 
 	}
@@ -69,7 +69,7 @@ public class ChatManager implements Serializable {
 					"Nome de utilizador já existe!", "ERROR MSG");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return "testelogin";
+			return "index";
 
 		} else {
 
@@ -81,7 +81,7 @@ public class ChatManager implements Serializable {
 					"Utilizador criado com sucesso!", "ERROR MSG");
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return "testelogin";
+			return "index";
 		}
 	}
 
@@ -98,7 +98,7 @@ public class ChatManager implements Serializable {
 		util.setLogeduser(false);
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		return "testelogin?faces-redirect=true";
+		return "index?faces-redirect=true";
 	}
 
 	public Utilizador getUtilactivo() {
