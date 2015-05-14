@@ -18,9 +18,9 @@ public class CalcTest {
 
 	@Test
 	public void testInsereVirgula() {
-		calc.virgulaValida = false;
-		calc.operadorValido = false;
-		calc.existeVirgula = true;
+		calc.setVirgulaValida(false);
+		calc.setOperadorValido(false);
+		calc.setExisteVirgula(true);
 		calc.setExp("10");
 		calc.insereVirgula(",");
 		Assert.assertEquals("10", calc.getExp());
