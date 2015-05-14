@@ -1,9 +1,11 @@
-package pt.uc.dei.aor.paj;
+package pt.uc.dei.aor.paj.calc;
 
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import pt.uc.dei.aor.paj.calc.Calc;
 
 public class CalcTest {
 

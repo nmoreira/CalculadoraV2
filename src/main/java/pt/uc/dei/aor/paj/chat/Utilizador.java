@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj;
+package pt.uc.dei.aor.paj.chat;
 
 import java.io.Serializable;
 

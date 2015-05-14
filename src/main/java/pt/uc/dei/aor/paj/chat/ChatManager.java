@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj;
+package pt.uc.dei.aor.paj.chat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,6 +9,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import pt.uc.dei.aor.paj.chat.Utilizador;
 
 @Named
 @ApplicationScoped

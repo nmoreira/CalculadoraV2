@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj;
+package pt.uc.dei.aor.paj.calc;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package pt.uc.dei.aor.paj;
+package pt.uc.dei.aor.paj.calc;
 
 public class Operador implements Comparable<Operador>{
 	
