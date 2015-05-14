@@ -4,26 +4,35 @@ package pt.uc.dei.aor.paj;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CalcTest {
 
+	@InjectMocks
 	private Calc calc;
 	
+	@Mock
+	private Expressao expressao;
 	
 
 	@Before
 	public void firstMethod() {
-		calc = new Calc();
+		calc.setExisteVirgula(true);
+		calc.setOperadorValido(true);
+		calc.setParentsisAberto(true);
+		calc.setVirgulaValida(true);
 	}
 
 	@Test
-	public void testInsereVirgula() {
-		calc.virgulaValida = false;
-		calc.operadorValido = false;
-		calc.existeVirgula = true;
-		calc.setExp("10");
-		calc.insereVirgula(",");
-		Assert.assertEquals("10", calc.getExp());
+	public void testClearAll() {
+		calc.clearAll();
+		
+	
+		Assert.assertEquals(false, calc.isExisteVirgula());
 	}
 	
 
