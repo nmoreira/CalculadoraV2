@@ -2,7 +2,13 @@ package pt.uc.dei.aor.paj;
 
 
 import java.util.ArrayList;
+
+
 import org.junit.Assert;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -114,5 +120,139 @@ public class CalcTest {
 		Assert.assertEquals("0.17632698070846498", calc.getMostrador());
 	}
 	
+	@Test
+	public void testParentsis(){
+		calc.read("abrepar");
+		calc.read("num1");
+		calc.read("num0");
+		calc.read("fechapar");
+		Assert.assertEquals(" (10) ", calc.getMostrador());
+	}
 	
+	@Test
+	public void testTrocaSinal(){
+		calc.read("num1");
+		calc.read("num0");
+		calc.read("maismenos");
+		Assert.assertEquals("-10", calc.getMostrador());
+	}
+	
+	 @Test
+	    public void testSoma() {
+	        calc.read("num1");
+	        calc.read("soma");
+	        calc.read("num2");
+	        calc.read("igual");
+	        Assert.assertEquals("3", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testSubtracao() {
+	        calc.read("num3");
+	        calc.read("sub");
+	        calc.read("num2");
+	        calc.read("igual");
+	        Assert.assertEquals("1", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testDivisao() {
+	        calc.read("num4");
+	        calc.read("div");
+	        calc.read("num2");
+	        calc.read("igual");
+	        Assert.assertEquals("2", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testMultiplicacao() {
+	        calc.read("num4");
+	        calc.read("mult");
+	        calc.read("num2");
+	        calc.read("igual");
+	        Assert.assertEquals("8", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testDivisaoZero() {
+	        calc.read("num4");
+	        calc.read("div");
+	        calc.read("num0");
+	        calc.read("igual");
+	        Assert.assertEquals("erros na expressao", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testOperadoresMultiplos() {
+	        calc.read("num4");
+	        calc.read("div");
+	        calc.read("mult");
+	        calc.read("igual");
+	        Assert.assertEquals("4 / ", calc.getMostrador());
+	    }
+	    
+	    @Test
+	    public void testRaizNegativa() {
+	        calc.read("raizq");
+	        calc.read("sub");
+	        calc.read("num4");
+	        calc.read("fechapar");
+	        calc.read("igual");
+	        Assert.assertEquals("NaN", calc.getMostrador());
+	    }
+	    
+	    @Test
+		public void testFatorial(){
+			calc.read("num3");
+			calc.read("num6");
+			calc.read("fact");
+			calc.read("igual");
+			assertThat(calc.getMostrador(), is("3.719933267899012E41"));	
+		}
+	    
+	    @Test
+		public void testXExpY(){
+			calc.read("num3");
+			calc.read("num6");
+			calc.read("xexpy");
+			calc.read("num4");
+			calc.read("igual");
+			assertThat(calc.getMostrador(), is("1679616"));	
+		}
+	    
+	    @Test
+	  		public void testSqrt(){
+	  			calc.read("raizq");
+	  			calc.read("num4");
+	  			calc.read("num4");
+	  			calc.read("fechapar");
+	  			calc.read("igual");
+	  			assertThat(calc.getMostrador(), is("6.6332495807108"));	
+	  		}
+	    
+	    @Test
+  		public void testEexpX(){
+  			calc.read("eexpx");
+  			calc.read("num4");
+  			calc.read("num4");
+  			calc.read("igual");
+  			assertThat(calc.getMostrador(), is("1.2851600114359278E19"));	
+  		}
+	    
+	    @Test
+  		public void testLog2(){
+  			calc.read("log2");
+  			calc.read("neper");
+  			calc.read("fechapar");
+  			calc.read("igual");
+  			assertThat(calc.getMostrador(), is("1.4426950408889634"));	
+  		}
+	    
+	    @Test
+  		public void testPercent(){
+  			calc.read("num3");
+  			calc.read("num5");
+  			calc.read("percent");
+  			assertThat(calc.getMostrador(), is("0.35"));	
+  		}
 }

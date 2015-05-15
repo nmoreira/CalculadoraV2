@@ -394,13 +394,13 @@ public class Calc implements Serializable{
 					}
 					est.recolheEstatistica(inputs);		
 				} catch (Exception e1) {
-					out = "erros na expressao1";			
+					out = "erros na expressao";			
 				}
 			} else {
-				out = "erros na expressao2";				
+				out = "erros na expressao";				
 			}	
 		} catch (Exception excp){
-			out = "erros na expressao3";
+			out = "erros na expressao";
 		}	
 		return out;
 	}
