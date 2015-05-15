@@ -16,7 +16,7 @@ public class Expressao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Stack<Input> entrada = new Stack<>();
 	
-	public String add(Input in){
+	public synchronized String add(Input in){
 		if(this.entrada.size() > 0 && 
 				(in.getTipo().contains("nm") || in.getTipo().contains("vg")) &&
 				(this.peekLastInput().getTipo().contains("nm") || this.peekLastInput().getTipo().contains("vg"))
@@ -31,12 +31,12 @@ public class Expressao implements Serializable {
 		return getExpressao();
 	}
 	
-	public String remove(){
+	public synchronized String remove(){
 		entrada.pop();
 		return getExpressao();
 	}
 	
-	private String getExpressao(){
+	private synchronized String getExpressao(){
 		String out="";
 		for (Input input : entrada) {
 			out += input.getConteudo();
@@ -45,12 +45,12 @@ public class Expressao implements Serializable {
 		
 	}
 	
-	public String clear(){
+	public synchronized String clear(){
 		entrada.clear();
 		return getExpressao();
 	}
 	
-	public ArrayList<Input> getInputs(){
+	public synchronized ArrayList<Input> getInputs(){
 		ArrayList<Input> out = new ArrayList<>();
 		for (Input input : entrada) {
 			out.add(input);
@@ -58,7 +58,7 @@ public class Expressao implements Serializable {
 		return out;
 	}
 	
-	public void loadInputs(ArrayList<Input> inputs){
+	public synchronized void loadInputs(ArrayList<Input> inputs){
 		entrada.clear();
 		for (Input input : inputs) {
 			entrada.push(input);
@@ -69,7 +69,7 @@ public class Expressao implements Serializable {
 		return entrada.peek();
 	}
 	
-	public String getLastInput(){
+	public synchronized String getLastInput(){
 		return entrada.pop().getConteudo();
 	}
 	
