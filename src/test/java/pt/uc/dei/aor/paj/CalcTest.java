@@ -18,12 +18,13 @@ public class CalcTest {
 	private Calc calc;
 	@Mock
 	private Expressao expressao;
-	private Entrada entrada;
-		
+	private Entrada entrada ;
+	@Mock
+	private Input input;
 	
 
 	@Test
-	public void testClearVirgula() {
+	public void testClearAllconditionVirgula() {
 		calc.setExisteVirgula(true);	
 		calc.clearAll();
 	
@@ -31,7 +32,7 @@ public class CalcTest {
 	}
 	
 	@Test
-	public void testClearOperador() {
+	public void testClearALLconditionOperador() {
 		calc.setOperadorValido(false);
 		calc.clearAll();
 	
@@ -39,12 +40,16 @@ public class CalcTest {
 	}
 	
 	@Test
-	public void testInsertOperadorAfterClearLastChar(){
+	public void testInsertOperadorAfterClearLastOperator(){
 		
+		
+	
 		calc.setExp("24*");
+		Mockito.when(expressao.peekLastInput()).thenReturn(input);
+		Mockito.when(input.getTipo()).thenReturn("op");
+		
 		Mockito.when(expressao.remove()).thenReturn("24");
 		calc.clearLast();
-		
 		
 		Assert.assertEquals(true, calc.isOperadorValido());
 		
@@ -52,13 +57,30 @@ public class CalcTest {
 	
 	
 	@Test
-	public void testClearLastDigit(){
+	public void testInsertOperadorAfterClearLastDigit(){
 		
-	    Mockito.when(expressao.remove()).thenReturn("2");	
-		calc.setExp("24");
+		calc.setExp("24-2");
+		Mockito.when(expressao.peekLastInput()).thenReturn(input);
+		Mockito.when(input.getTipo()).thenReturn("nm");
+	    Mockito.when(expressao.remove()).thenReturn("24-");	
+
 		calc.clearLast();
 		
-		Assert.assertEquals("2", calc.getExp());
+		Assert.assertEquals(false, calc.isOperadorValido());
+		
+	}
+	
+	@Test
+	public void testClearLastDigit(){
+		
+		calc.setExp("24");
+		Mockito.when(expressao.peekLastInput()).thenReturn(input);
+		Mockito.when(input.getTipo()).thenReturn("nm");
+	    Mockito.when(expressao.remove()).thenReturn("");	
+
+		calc.clearLast();
+		
+		Assert.assertEquals("", calc.getExp());
 		
 	}
 	

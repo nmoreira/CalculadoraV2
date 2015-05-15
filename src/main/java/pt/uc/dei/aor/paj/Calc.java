@@ -426,10 +426,15 @@ public class Calc implements Serializable{
 	
 	public void clearLast(){
 		if(mostrador.length() > 0){
+			String last = expressao.peekLastInput().getTipo();
+			if(last.equals("op")){
+				operadorValido = true;
+				virgulaValida = true;
+			}else if(last.equals("vg")){
+				existeVirgula = false;
+			}			
 			mostrador=expressao.remove();
-			operadorValido=true;
-		}
-			
+		}			
 	}
 	
 	public void reUseExp(Entrada ent){
