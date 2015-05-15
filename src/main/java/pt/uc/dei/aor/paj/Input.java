@@ -6,7 +6,6 @@ public class Input {
 	private String conteudo;
 	
 	public Input(String tipo, String conteudo) {
-		super();
 		this.tipo = tipo;
 		this.conteudo = conteudo;
 	}
