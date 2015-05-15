@@ -425,8 +425,11 @@ public class Calc implements Serializable{
 	}
 	
 	public void clearLast(){
-		if(mostrador.length() > 0)
+		if(mostrador.length() > 0){
 			mostrador=expressao.remove();
+			operadorValido=true;
+		}
+			
 	}
 	
 	public void reUseExp(Entrada ent){

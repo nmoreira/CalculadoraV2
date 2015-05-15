@@ -19,7 +19,7 @@ public class CalcTest {
 	@Mock
 	private Expressao expressao;
 	private Entrada entrada;
-	
+		
 	
 
 	@Test
@@ -37,6 +37,19 @@ public class CalcTest {
 	
 		Assert.assertEquals(true, calc.isOperadorValido());
 	}
+	
+	@Test
+	public void testInsertOperadorAfterClearLastChar(){
+		
+		calc.setExp("24*");
+		Mockito.when(expressao.remove()).thenReturn("24");
+		calc.clearLast();
+		
+		
+		Assert.assertEquals(true, calc.isOperadorValido());
+		
+	}
+	
 	
 	@Test
 	public void testClearLastDigit(){
@@ -77,7 +90,6 @@ public class CalcTest {
 		
 		Assert.assertEquals("225", calc.getExp());			
 	}
-	
 	
 	
 }
