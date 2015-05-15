@@ -3,18 +3,18 @@ package pt.uc.dei.aor.paj;
 import java.util.ArrayList;
 import java.util.Stack;
 
-
-
-import javax.enterprise.context.SessionScoped;
-
 import java.io.Serializable;
 
-@SessionScoped
+
 public class Expressao implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	private Stack<Input> entrada = new Stack<>();
+	
+	public Expressao(){
+		
+	}
 	
 	public synchronized String add(Input in){
 		if(this.entrada.size() > 0 && 
@@ -66,7 +66,9 @@ public class Expressao implements Serializable {
 	}
 	
 	public Input peekLastInput(){
-		return entrada.peek();
+		if( entrada.size() > 0)
+			return entrada.peek();
+		else return null;
 	}
 	
 	public synchronized String getLastInput(){

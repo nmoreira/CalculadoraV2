@@ -24,7 +24,6 @@ public class Calc implements Serializable{
 	private String mostrador="";
 	private boolean cientifica = false;
 	
-	@Inject
 	private Expressao expressao;
 	
 	@Inject
@@ -43,13 +42,18 @@ public class Calc implements Serializable{
 
 	
 	public Calc(){
+		expressao = new Expressao();
 		init();		
-	}	
+	}
 	
 	public void read(ActionEvent evento){
+		this.read(evento.getComponent().getId());
+	}
+	
+	public void read(String str){
 		
 		
-		switch(evento.getComponent().getId()){
+		switch(str){
 		case "num0": {			
 			novoDigito("0");	
 		}break;
@@ -390,13 +394,13 @@ public class Calc implements Serializable{
 					}
 					est.recolheEstatistica(inputs);		
 				} catch (Exception e1) {
-					out = "erros na expressao";			
+					out = "erros na expressao1";			
 				}
 			} else {
-				out = "erros na expressao";				
+				out = "erros na expressao2";				
 			}	
 		} catch (Exception excp){
-			out = "erros na expressao";
+			out = "erros na expressao3";
 		}	
 		return out;
 	}
@@ -408,7 +412,6 @@ public class Calc implements Serializable{
 	public void setMostrador(String mostrador) {
 		this.mostrador = mostrador;
 	}
-
 
 	private void init(){
 		virgulaValida = false;
@@ -425,7 +428,7 @@ public class Calc implements Serializable{
 	}
 	
 	public void clearLast(){
-		if(mostrador.length() > 0){
+		if(mostrador.length() > 0 && expressao.peekLastInput() != null){
 			String last = expressao.peekLastInput().getTipo();
 			if(last.equals("op")){
 				operadorValido = true;

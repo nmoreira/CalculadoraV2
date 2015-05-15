@@ -40,8 +40,7 @@ public class Estatistica implements Serializable{
 		operation.put("!", new Operador("Fatorial (!)"));
 		operation.put("cbrt", new Operador("Raiz Cúbica"));
 		operation.put("e^x", new Operador("Função e^x"));
-		operation.put("10^x", new Operador("Função 10^x"));
-			
+		operation.put("10^x", new Operador("Função 10^x"));		
 	}
 	
 	public void recolheEstatistica(Expressao exp){

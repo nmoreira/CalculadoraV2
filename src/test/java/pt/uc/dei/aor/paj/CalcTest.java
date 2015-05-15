@@ -2,13 +2,11 @@ package pt.uc.dei.aor.paj;
 
 
 import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -16,11 +14,18 @@ public class CalcTest {
 
 	@InjectMocks
 	private Calc calc;
-	@Mock
-	private Expressao expressao;
+	
+
+	
 	private Entrada entrada ;
 	@Mock
 	private Input input;
+	
+	@Mock
+	private Estatistica est;
+	
+	@Mock
+	private Historico hist;
 	
 
 	@Test
@@ -41,55 +46,37 @@ public class CalcTest {
 	
 	@Test
 	public void testInsertOperadorAfterClearLastOperator(){
-		
-		
-	
 		calc.setExp("24*");
-		Mockito.when(expressao.peekLastInput()).thenReturn(input);
-		Mockito.when(input.getTipo()).thenReturn("op");
-		
-		Mockito.when(expressao.remove()).thenReturn("24");
+		calc.read("num2");
+		calc.read("num4");
+		calc.read("mult");
 		calc.clearLast();
-		
-		Assert.assertEquals(true, calc.isOperadorValido());
-		
+		Assert.assertEquals(true, calc.isOperadorValido());	
 	}
 	
 	
 	@Test
 	public void testInsertOperadorAfterClearLastDigit(){
-		
-		calc.setExp("24-2");
-		Mockito.when(expressao.peekLastInput()).thenReturn(input);
-		Mockito.when(input.getTipo()).thenReturn("nm");
-	    Mockito.when(expressao.remove()).thenReturn("24-");	
-
+		calc.read("num2");
+		calc.read("num4");
+		calc.read("sub");
+		calc.read("num2");
 		calc.clearLast();
-		
-		Assert.assertEquals(false, calc.isOperadorValido());
-		
+		Assert.assertEquals(true, calc.isOperadorValido());
 	}
 	
 	@Test
 	public void testClearLastDigit(){
-		
-		calc.setExp("24");
-		Mockito.when(expressao.peekLastInput()).thenReturn(input);
-		Mockito.when(input.getTipo()).thenReturn("nm");
-	    Mockito.when(expressao.remove()).thenReturn("");	
-
-		calc.clearLast();
-		
+		calc.read("num2");
+		calc.read("num4");
+		calc.clearLast();		
 		Assert.assertEquals("", calc.getExp());
-		
 	}
 	
 	@Test
 	public void anotherTestClearLastDigit(){
-		
 		calc.setExp("");
 		calc.clearLast();
-		
 		Assert.assertEquals("", calc.getExp());		
 	}
 	
@@ -99,18 +86,32 @@ public class CalcTest {
 		ArrayList<Input> input = new ArrayList<Input>();
 		entrada = new Entrada("20+4","24",input ,"0.05");
 		calc.reUseExp(entrada);
-		
 		Assert.assertEquals("20+4", calc.getExp());			
 	}
 	
 	@Test
 	public void testReUseResReturnsMostrador(){
-		
 		ArrayList<Input> input = new ArrayList<Input>();
 		entrada = new Entrada("25*9","225",input ,"0.05");
 		calc.reUseResult(entrada);
-		
 		Assert.assertEquals("225", calc.getExp());			
+	}
+	
+	@Test
+	public void testRead(){
+		calc.read("num1");
+		Assert.assertEquals("1", calc.getMostrador());
+	}
+	
+	@Test
+	public void testTanRad(){
+		calc.setRadianos(false);
+		calc.read("tan");
+		calc.read("num1");
+		calc.read("num0");
+		calc.read("fechapar");
+		calc.read("igual");
+		Assert.assertEquals("0.17632698070846498", calc.getMostrador());
 	}
 	
 	
